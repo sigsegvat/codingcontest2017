@@ -25,6 +25,14 @@ class HyperMultiMap {
         distance(from, to) / 15
     }
 
+    def calcMeters() {
+        long meters = 0
+        for(int i = 0; (i< hyperroute.size()-1); i++) {
+            meters += distance(hyperroute[i],hyperroute[i+1])
+        }
+        return meters
+    }
+
     def hyperLoopTime(String from, to) {
         def last = hyperroute[0]
         def time = 0
