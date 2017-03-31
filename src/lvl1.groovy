@@ -1,37 +1,40 @@
 
+class Location {
 
+    String name
+    int x,y
 
-class Game {
+    public Location(String name, x,y)
+    {
+        this.name = name
+        this.x = x as Integer
+        this.y= y as Integer
 
-    char or
-    int x,y, w,l
-
-    public Game(String or, x,y, w,l){
-        this.or = or
-        this.x = x
-        this.y= y
-        this.w=w
-        this.l=l
     }
 
-    Set blocks = []
 
     String toString() { this.properties }
 }
 
 
-new File("levels/1/input.txt").readLines().forEach({ line ->
+def lines = new File("levels/1/level1-4.txt").readLines()
+
+int nr =  lines[0] as Integer
+
+println lines[1..nr]
+
+Map<String,Location> locations = new HashMap<>()
+
+lines[1..nr].forEach({ line ->
 
     def tokenize = line.tokenize()
-    int id
-    String rest
-    (id, rest) = tokenize
-    println "$id, $rest"
-    println tokenize[1..5] as Game
-
+    def loc =  tokenize as Location
+    locations.put(loc.name, loc)
 
 })
 
+def (from,to) = lines[-1].tokenize()
 
-
+println "$from $to"
+println Math.sqrt((locations[from].x -locations[to].x ).power(2) +(locations[from].y -locations[to].y ).power(2)) / 250 + 200
 
