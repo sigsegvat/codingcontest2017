@@ -2,7 +2,7 @@
 class Location {
 
     String name
-    int x,y
+    long x,y
 
     public Location(String name, x,y)
     {
